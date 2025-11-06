@@ -1,0 +1,69 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directories
+coverage/
+*.lcov
+
+# Build outputs
+dist/
+build/
+out/
+tmp/
+temp/
+
+# Environment variables
+.env
+.env.*.local
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+.stylelintcache
+.next/
+.nuxt/
+.svelte-kit/
+vite.config.ts.timestamp*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional lock files (caso use apenas um gerenciador de pacotes)
+# Descomente o que você NÃO usa:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# bun.lockb
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Misc
+*.orig
+*.bak
