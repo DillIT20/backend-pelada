@@ -13,12 +13,31 @@ import dashboardRoutes from "./routes/dashboard.js";
 dotenv.config();
 
 const app = express();
+
+
+const allowedOrigins = [
+  "http://localhost:8080",         
+  "https://dillit.io",             
+  "https://www.dillit.io",
+  "https://dillit.io/peladafc",   
+];
+
 app.use(cors({
-  origin: ["https://seu-front.onrender.com", "http://localhost:8080"],
+  origin: (origin, callback) => {
+    // Permite requisições sem "origin" (como de cURL ou Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`🚫 Origem bloqueada pelo CORS: ${origin}`);
+      callback(new Error("Não permitido pelo CORS"));
+    }
+  },
   credentials: true,
 }));
+
 app.use(express.json());
 
+/* ✅ Rotas */
 app.use("/api", jogadoresRouter); 
 app.use("/api/turmas", turmasRouter);
 app.use("/api/excecoes-partidas", excecoesRouter);
@@ -30,5 +49,6 @@ app.use(uploadRouter);
 
 app.get("/", (req, res) => res.send("Servidor rodando!"));
 
+/* ✅ Porta configurável */
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Servidor rodando na porta ${PORT}`));
